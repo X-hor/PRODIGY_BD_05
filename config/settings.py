@@ -22,10 +22,11 @@ INSTALLED_APPS = [
     # Third-party 
     'rest_framework',
     'drf_spectacular',
+    'django_filters',
     # Local apps 
-    'accounts',
     'rooms',
-    'bookings'
+    'bookings',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+    'django_filters.rest_framework.DjangoFilterBackend'
+    ],
 }
 
 # JWT Config
@@ -137,8 +141,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 # Custom User Model
-# AUTH_USER_MODEL = ''
-
+AUTH_USER_MODEL = 'accounts.User'
 
 # Cache config
 # CACHES = {
